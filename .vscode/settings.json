@@ -21,6 +21,7 @@
         "preprocessors",
         "pygrep",
         "pyproject",
+        "pytest",
         "pyupgrade",
         "striptags",
         "topo",
