@@ -1,0 +1,29 @@
+{
+    "ruff.enable": true,
+    "ruff.fixAll": false,
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always",
+            "source.fixAll": "explicit",
+        }
+    },
+    "cSpell.words": [
+        "autofix",
+        "commitizen",
+        "endfor",
+        "endmacro",
+        "endraw",
+        "isort",
+        "mypy",
+        "postprocessors",
+        "preprocessors",
+        "pygrep",
+        "pyproject",
+        "pyupgrade",
+        "striptags",
+        "topo",
+        "ZhengYu"
+    ],
+}

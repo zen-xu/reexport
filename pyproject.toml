@@ -1,0 +1,71 @@
+[tool.poetry]
+authors = ["ZhengYu, Xu <zen-xu@outlook.com>"]
+description = "reexport provides a simple way to re-export objects."
+name = "reexport"
+readme = "README.md"
+version = "0.1.0b0" # version anchor
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[tool.poetry.dependencies]
+python            = "^3.7"
+typing-extensions = "^4.5.0"
+
+[tool.poetry.group.dev.dependencies]
+commitizen = "*"
+ruff       = "^0.5.4"
+
+[tool.commitizen]
+bump_message   = "chore(release): bump version $current_version -> $new_version"
+pre_bump_hooks = ["./update-changelog.sh"]
+version        = "0.1.0b0"                                                       # version anchor
+version_files  = ["pyproject.toml:version anchor", "reexport/__init__.py"]
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires      = ["poetry-core"]
+
+[tool.ruff]
+fix            = true
+line-length    = 88
+target-version = "py37"
+
+[tool.ruff.lint]
+extend-select = [
+  "B",   # flake8-bugbear
+  "C4",  # flake8-comprehensions
+  "ERA", # flake8-eradicate/eradicate
+  "I",   # isort
+  "N",   # pep8-naming
+  "PIE", # flake8-pie
+  "PGH", # pygrep
+  "RUF", # ruff checks
+  "SIM", # flake8-simplify
+  "TCH", # flake8-type-checking
+  "TID", # flake8-tidy-imports
+  "UP",  # pyupgrade
+]
+
+[tool.ruff.lint.isort]
+force-single-line   = true
+known-first-party   = ["reexport"]
+lines-after-imports = 2
+lines-between-types = 1
+required-imports    = ["from __future__ import annotations"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+explicit_package_bases = true
+files                  = "reexport"
+namespace_packages     = true
+show_error_codes       = true
