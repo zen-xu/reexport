@@ -6,7 +6,7 @@
     from f import *
 
     def f(v: float) -> int: return 1
-    reveal_type(concatenate(f, {{ params | join(",") }}, kind="add")) # N: Revealed type is "def ({{ params | map('~ "f." ~ it') | join(", ") }}, v: builtins.float) -> builtins.int"
+    reveal_type(concatenate(f, {{ params | join(",") }}, kind="add")) # N: Revealed type is "def ({% for param in params %}{%- if not loop.first %}, {% endif -%}f.{{ param }}{% endfor %}, v: builtins.float) -> builtins.int"
   files:
   - path: f.py
     content: |
@@ -22,3 +22,10 @@
   parametrized:
     - params: [C1]
     - params: [C1, C2]
+    - params: [C1, C2, C3]
+    - params: [C1, C2, C3, C4]
+    - params: [C1, C2, C3, C4, C5]
+    - params: [C1, C2, C3, C4, C5, C6]
+    - params: [C1, C2, C3, C4, C5, C6, C7]
+    - params: [C1, C2, C3, C4, C5, C6, C7, C8]
+    - params: [C1, C2, C3, C4, C5, C6, C7, C8, C9]
