@@ -71,3 +71,6 @@ explicit_package_bases = true
 files                  = "reexport"
 namespace_packages     = true
 show_error_codes       = true
+
+[tool.pytest]
+addopts = ["--mypy-only-local-stub"]
