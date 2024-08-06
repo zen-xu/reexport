@@ -333,11 +333,11 @@ def concatenate(
 ) -> Callable[
     [
         Callable[
-            Concatenate[Any, Any, _FP],
+            Concatenate[_T1, Any, _FP],
             _FR,
         ]
     ],
-    Callable[_FP, _FR],
+    Callable[Concatenate[_T1, _FP], _FR],
 ]: ...
 
 
@@ -348,11 +348,11 @@ def concatenate(
 ) -> Callable[
     [
         Callable[
-            Concatenate[Any, Any, Any, _FP],
+            Concatenate[_T1, _T2, Any, _FP],
             _FR,
         ]
     ],
-    Callable[_FP, _FR],
+    Callable[Concatenate[_T1, _T2, _FP], _FR],
 ]: ...
 
 
@@ -363,11 +363,11 @@ def concatenate(
 ) -> Callable[
     [
         Callable[
-            Concatenate[Any, Any, Any, Any, _FP],
+            Concatenate[_T1, _T2, _T3, Any, _FP],
             _FR,
         ]
     ],
-    Callable[_FP, _FR],
+    Callable[Concatenate[_T1, _T2, _T3, _FP], _FR],
 ]: ...
 
 
@@ -378,11 +378,11 @@ def concatenate(
 ) -> Callable[
     [
         Callable[
-            Concatenate[Any, Any, Any, Any, Any, _FP],
+            Concatenate[_T1, _T2, _T3, _T4, Any, _FP],
             _FR,
         ]
     ],
-    Callable[_FP, _FR],
+    Callable[Concatenate[_T1, _T2, _T3, _T4, _FP], _FR],
 ]: ...
 
 
@@ -393,11 +393,11 @@ def concatenate(
 ) -> Callable[
     [
         Callable[
-            Concatenate[Any, Any, Any, Any, Any, Any, _FP],
+            Concatenate[_T1, _T2, _T3, _T4, _T5, Any, _FP],
             _FR,
         ]
     ],
-    Callable[_FP, _FR],
+    Callable[Concatenate[_T1, _T2, _T3, _T4, _T5, _FP], _FR],
 ]: ...
 
 
@@ -408,11 +408,11 @@ def concatenate(
 ) -> Callable[
     [
         Callable[
-            Concatenate[Any, Any, Any, Any, Any, Any, Any, _FP],
+            Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, Any, _FP],
             _FR,
         ]
     ],
-    Callable[_FP, _FR],
+    Callable[Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _FP], _FR],
 ]: ...
 
 
@@ -423,11 +423,11 @@ def concatenate(
 ) -> Callable[
     [
         Callable[
-            Concatenate[Any, Any, Any, Any, Any, Any, Any, Any, _FP],
+            Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, Any, _FP],
             _FR,
         ]
     ],
-    Callable[_FP, _FR],
+    Callable[Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _FP], _FR],
 ]: ...
 
 
@@ -438,11 +438,11 @@ def concatenate(
 ) -> Callable[
     [
         Callable[
-            Concatenate[Any, Any, Any, Any, Any, Any, Any, Any, Any, _FP],
+            Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _T8, Any, _FP],
             _FR,
         ]
     ],
-    Callable[_FP, _FR],
+    Callable[Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _T8, _FP], _FR],
 ]: ...
 
 
@@ -465,7 +465,7 @@ def concatenate(
     ],
     *,
     remove: Literal[2],
-) -> Callable[_FP, _FR]: ...
+) -> Callable[Concatenate[_T1, _FP], _FR]: ...
 
 
 @overload
@@ -476,7 +476,7 @@ def concatenate(
     ],
     *,
     remove: Literal[3],
-) -> Callable[_FP, _FR]: ...
+) -> Callable[Concatenate[_T1, _T2, _FP], _FR]: ...
 
 
 @overload
@@ -487,7 +487,7 @@ def concatenate(
     ],
     *,
     remove: Literal[4],
-) -> Callable[_FP, _FR]: ...
+) -> Callable[Concatenate[_T1, _T2, _T3, _FP], _FR]: ...
 
 
 @overload
@@ -498,7 +498,7 @@ def concatenate(
     ],
     *,
     remove: Literal[5],
-) -> Callable[_FP, _FR]: ...
+) -> Callable[Concatenate[_T1, _T2, _T3, _T4, _FP], _FR]: ...
 
 
 @overload
@@ -509,7 +509,7 @@ def concatenate(
     ],
     *,
     remove: Literal[6],
-) -> Callable[_FP, _FR]: ...
+) -> Callable[Concatenate[_T1, _T2, _T3, _T4, _T5, _FP], _FR]: ...
 
 
 @overload
@@ -520,7 +520,7 @@ def concatenate(
     ],
     *,
     remove: Literal[7],
-) -> Callable[_FP, _FR]: ...
+) -> Callable[Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _FP], _FR]: ...
 
 
 @overload
@@ -531,7 +531,7 @@ def concatenate(
     ],
     *,
     remove: Literal[8],
-) -> Callable[_FP, _FR]: ...
+) -> Callable[Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _FP], _FR]: ...
 
 
 @overload
@@ -542,7 +542,7 @@ def concatenate(
     ],
     *,
     remove: Literal[9],
-) -> Callable[_FP, _FR]: ...
+) -> Callable[Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _T8, _FP], _FR]: ...
 
 
 @overload

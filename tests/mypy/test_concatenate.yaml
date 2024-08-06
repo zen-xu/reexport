@@ -47,36 +47,36 @@
     from f import *
 
     def f(v1: C1, v2: C2, v3: C3, v4: C4, v5: C5, v6: C6, v7: C7, v8: C8, v9: C9) -> int: return 1
-    reveal_type(concatenate(f, remove={{ remove }})) # N: Revealed type is "def ({% for param in params %}{%- if not loop.first %}, {% endif -%}v{{ param[1] }}: f.{{ param }}{% endfor %}) -> builtins.int"
+    reveal_type(concatenate(f, remove={{ id }})) # N: Revealed type is "def ({{ params }}) -> builtins.int"
   files: *source
   parametrized: &remove_params
-    - params: [C2, C3, C4, C5, C6, C7, C8, C9]
-      remove: 1
-    - params: [C3, C4, C5, C6, C7, C8, C9]
-      remove: 2
-    - params: [C4, C5, C6, C7, C8, C9]
-      remove: 3
-    - params: [C5, C6, C7, C8, C9]
-      remove: 4
-    - params: [C6, C7, C8, C9]
-      remove: 5
-    - params: [C7, C8, C9]
-      remove: 6
-    - params: [C8, C9]
-      remove: 7
-    - params: [C9]
-      remove: 8
-    - params: []
-      remove: 9
+    - params: "v2: f.C2, v3: f.C3, v4: f.C4, v5: f.C5, v6: f.C6, v7: f.C7, v8: f.C8, v9: f.C9"
+      id: 1
+    - params: "f.C1, v3: f.C3, v4: f.C4, v5: f.C5, v6: f.C6, v7: f.C7, v8: f.C8, v9: f.C9"
+      id: 2
+    - params: "f.C1, f.C2, v4: f.C4, v5: f.C5, v6: f.C6, v7: f.C7, v8: f.C8, v9: f.C9"
+      id: 3
+    - params: "f.C1, f.C2, f.C3, v5: f.C5, v6: f.C6, v7: f.C7, v8: f.C8, v9: f.C9"
+      id: 4
+    - params: "f.C1, f.C2, f.C3, f.C4, v6: f.C6, v7: f.C7, v8: f.C8, v9: f.C9"
+      id: 5
+    - params: "f.C1, f.C2, f.C3, f.C4, f.C5, v7: f.C7, v8: f.C8, v9: f.C9"
+      id: 6
+    - params: "f.C1, f.C2, f.C3, f.C4, f.C5, f.C6, v8: f.C8, v9: f.C9"
+      id: 7
+    - params: "f.C1, f.C2, f.C3, f.C4, f.C5, f.C6, f.C7, v9: f.C9"
+      id: 8
+    - params: "f.C1, f.C2, f.C3, f.C4, f.C5, f.C6, f.C7, f.C8"
+      id: 9
 
 - case: concatenate_remove_as_decorator
   main: |
     from reexport import concatenate
     from f import *
 
-    @concatenate(remove={{ remove }})
+    @concatenate(remove={{ id }})
     def f(v1: C1, v2: C2, v3: C3, v4: C4, v5: C5, v6: C6, v7: C7, v8: C8, v9: C9) -> int: return 1
-    reveal_type(f) # N: Revealed type is "def ({% for param in params %}{%- if not loop.first %}, {% endif -%}v{{ param[1] }}: f.{{ param }}{% endfor %}) -> builtins.int"
+    reveal_type(f) # N: Revealed type is "def ({{ params }}) -> builtins.int"
   files: *source
   parametrized: *remove_params
 
