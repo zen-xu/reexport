@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/typeddjango/pytest-mypy-plugins/master/pytest_mypy_plugins/schema.json
+
+- case: clone_params_keep_return
+  main: |
+    from reexport import clone_params
+
+
+    def f1(v1: int, v2: float) -> str: return ""
+
+    @clone_params(f1, keep_return={{ keep_return }})
+    def f2(*args, **kwargs) -> int: return 1
+
+    reveal_type(f2) # N: Revealed type is "def (v1: builtins.int, v2: builtins.float) -> builtins.{{ return_type }}"
+  parametrized:
+    - keep_return: true
+      return_type: str
+    - keep_return: false
+      return_type: int

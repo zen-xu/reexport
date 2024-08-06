@@ -17,6 +17,7 @@
         "endmacro",
         "endraw",
         "isort",
+        "kwargs",
         "mypy",
         "postprocessors",
         "preprocessors",
