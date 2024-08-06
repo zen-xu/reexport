@@ -35,24 +35,24 @@ _T9 = TypeVar("_T9")
 
 
 @overload
-def clone_params_from(
-    __clone_func: Callable[_FP, _FR],
+def clone_params(
+    __from: Callable[_FP, _FR],
 ) -> Callable[[Callable[..., Any]], Callable[_FP, _FR]]: ...
 
 
 @overload
-def clone_params_from(
-    __clone_func: Callable[_FP, _FR], *, keep_return: Literal[True]
+def clone_params(
+    __from: Callable[_FP, _FR], *, keep_return: Literal[True]
 ) -> Callable[[Callable[..., Any]], Callable[_FP, _FR]]: ...
 
 
 @overload
-def clone_params_from(
-    __clone_func: Callable[_FP, _FR], *, keep_return: Literal[False]
+def clone_params(
+    __from: Callable[_FP, _FR], *, keep_return: Literal[False]
 ) -> Callable[[Callable[..., _TR]], Callable[_FP, _TR]]: ...
 
 
-def clone_params_from(__clone_func: Callable, *, keep_return: bool = True) -> Callable:
+def clone_params(__from: Callable, *, keep_return: bool = True) -> Callable:
     def decorator(func):
         return func
 
