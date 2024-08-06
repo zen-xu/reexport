@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/typeddjango/pytest-mypy-plugins/master/pytest_mypy_plugins/schema.json
+
+- case: compose
+  main: |
+    from reexport import clone_params, concatenate
+
+    def f(v: float) -> int:
+        return 1
+
+    @concatenate(transform=(1, bool))
+    @concatenate(add=(int, str))
+    @clone_params(f)
+    def main(*args, **kwargs) -> str:
+        return ""
+
+    reveal_type(main) # N: Revealed type is "def (builtins.bool, builtins.str, v: builtins.float) -> builtins.int"
