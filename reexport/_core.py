@@ -61,6 +61,138 @@ def clone_params_from(__clone_func: Callable, *, keep_return: bool = True) -> Ca
 
 @overload
 def concatenate(
+    *, add: tuple[type[_T1]]
+) -> Callable[
+    [Callable[_FP, _FR]],
+    Callable[
+        Concatenate[_T1, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *, add: tuple[type[_T1], type[_T2]]
+) -> Callable[
+    [Callable[_FP, _FR]],
+    Callable[
+        Concatenate[_T1, _T2, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *, add: tuple[type[_T1], type[_T2], type[_T3]]
+) -> Callable[
+    [Callable[_FP, _FR]],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *, add: tuple[type[_T1], type[_T2], type[_T3], type[_T4]]
+) -> Callable[
+    [Callable[_FP, _FR]],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *, add: tuple[type[_T1], type[_T2], type[_T3], type[_T4], type[_T5]]
+) -> Callable[
+    [Callable[_FP, _FR]],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _T5, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *, add: tuple[type[_T1], type[_T2], type[_T3], type[_T4], type[_T5], type[_T6]]
+) -> Callable[
+    [Callable[_FP, _FR]],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    add: tuple[
+        type[_T1], type[_T2], type[_T3], type[_T4], type[_T5], type[_T6], type[_T7]
+    ],
+) -> Callable[
+    [Callable[_FP, _FR]],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    add: tuple[
+        type[_T1],
+        type[_T2],
+        type[_T3],
+        type[_T4],
+        type[_T5],
+        type[_T6],
+        type[_T7],
+        type[_T8],
+    ],
+) -> Callable[
+    [Callable[_FP, _FR]],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _T8, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    add: tuple[
+        type[_T1],
+        type[_T2],
+        type[_T3],
+        type[_T4],
+        type[_T5],
+        type[_T6],
+        type[_T7],
+        type[_T8],
+        type[_T9],
+    ],
+) -> Callable[
+    [Callable[_FP, _FR]],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _T8, _T9, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
     __func: Callable[_FP, _FR],
     *,
     add: tuple[type[_T1]],
@@ -181,6 +313,141 @@ def concatenate(
 
 @overload
 def concatenate(
+    *,
+    remove: Literal[1],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[_FP, _FR],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    remove: Literal[2],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[_FP, _FR],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    remove: Literal[3],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, Any, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[_FP, _FR],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    remove: Literal[4],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, Any, Any, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[_FP, _FR],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    remove: Literal[5],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, Any, Any, Any, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[_FP, _FR],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    remove: Literal[6],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, Any, Any, Any, Any, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[_FP, _FR],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    remove: Literal[7],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, Any, Any, Any, Any, Any, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[_FP, _FR],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    remove: Literal[8],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, Any, Any, Any, Any, Any, Any, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[_FP, _FR],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    remove: Literal[9],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, Any, Any, Any, Any, Any, Any, Any, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[_FP, _FR],
+]: ...
+
+
+@overload
+def concatenate(
     __func: Callable[
         Concatenate[_T1, _FP],
         _FR,
@@ -276,6 +543,168 @@ def concatenate(
     *,
     remove: Literal[9],
 ) -> Callable[_FP, _FR]: ...
+
+
+@overload
+def concatenate(
+    *,
+    transform: tuple[Literal[1], type[_As]],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[
+        Concatenate[_As, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    transform: tuple[Literal[2], type[_As]],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[_T1, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[
+        Concatenate[_T1, _As, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    transform: tuple[Literal[3], type[_As]],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[_T1, _T2, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[
+        Concatenate[_T1, _T2, _As, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    transform: tuple[Literal[4], type[_As]],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[_T1, _T2, _T3, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _As, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    transform: tuple[Literal[5], type[_As]],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[_T1, _T2, _T3, _T4, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _As, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    transform: tuple[Literal[6], type[_As]],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[_T1, _T2, _T3, _T4, _T5, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _T5, _As, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    transform: tuple[Literal[7], type[_As]],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _As, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    transform: tuple[Literal[8], type[_As]],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _As, _FP],
+        _FR,
+    ],
+]: ...
+
+
+@overload
+def concatenate(
+    *,
+    transform: tuple[Literal[9], type[_As]],
+) -> Callable[
+    [
+        Callable[
+            Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _T8, Any, _FP],
+            _FR,
+        ]
+    ],
+    Callable[
+        Concatenate[_T1, _T2, _T3, _T4, _T5, _T6, _T7, _T8, _As, _FP],
+        _FR,
+    ],
+]: ...
 
 
 @overload
@@ -404,6 +833,15 @@ def concatenate(
 ]: ...
 
 
-def concatenate(__func: Callable, *, add=None, remove=None, transform=None) -> Callable:
+def concatenate(
+    __func: Callable | None = None, *, add=None, remove=None, transform=None
+) -> Callable:
     "adds, removes or transforms parameters of a callable."
-    return __func  # type: ignore[return-type]
+
+    if __func:
+        return __func
+
+    def wrapper(func):
+        return func
+
+    return wrapper

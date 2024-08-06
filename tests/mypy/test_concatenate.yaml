@@ -19,7 +19,7 @@
       class C7: ...
       class C8: ...
       class C9: ...
-  parametrized:
+  parametrized: &add_params
     - params: [C1]
     - params: [C1, C2]
     - params: [C1, C2, C3]
@@ -30,6 +30,17 @@
     - params: [C1, C2, C3, C4, C5, C6, C7, C8]
     - params: [C1, C2, C3, C4, C5, C6, C7, C8, C9]
 
+- case: concatenate_add_as_decorator
+  main: |
+    from reexport import concatenate
+    from f import *
+
+    @concatenate(add=({{ params | join(",") }},))
+    def f(v: float) -> int: return 1
+    reveal_type(f) # N: Revealed type is "def ({% for param in params %}{%- if not loop.first %}, {% endif -%}f.{{ param }}{% endfor %}, v: builtins.float) -> builtins.int"
+  files: *source
+  parametrized: *add_params
+
 - case: concatenate_remove
   main: |
     from reexport import concatenate
@@ -38,7 +49,7 @@
     def f(v1: C1, v2: C2, v3: C3, v4: C4, v5: C5, v6: C6, v7: C7, v8: C8, v9: C9) -> int: return 1
     reveal_type(concatenate(f, remove={{ remove }})) # N: Revealed type is "def ({% for param in params %}{%- if not loop.first %}, {% endif -%}v{{ param[1] }}: f.{{ param }}{% endfor %}) -> builtins.int"
   files: *source
-  parametrized:
+  parametrized: &remove_params
     - params: [C2, C3, C4, C5, C6, C7, C8, C9]
       remove: 1
     - params: [C3, C4, C5, C6, C7, C8, C9]
@@ -58,6 +69,17 @@
     - params: []
       remove: 9
 
+- case: concatenate_remove_as_decorator
+  main: |
+    from reexport import concatenate
+    from f import *
+
+    @concatenate(remove={{ remove }})
+    def f(v1: C1, v2: C2, v3: C3, v4: C4, v5: C5, v6: C6, v7: C7, v8: C8, v9: C9) -> int: return 1
+    reveal_type(f) # N: Revealed type is "def ({% for param in params %}{%- if not loop.first %}, {% endif -%}v{{ param[1] }}: f.{{ param }}{% endfor %}) -> builtins.int"
+  files: *source
+  parametrized: *remove_params
+
 - case: concatenate_transform
   main: |
     from reexport import concatenate
@@ -66,7 +88,7 @@
     def f(v1: C1, v2: C2, v3: C3, v4: C4, v5: C5, v6: C6, v7: C7, v8: C8, v9: C9) -> int: return 1
     reveal_type(concatenate(f, transform=({{ id }}, int))) # N: Revealed type is "def ({{params}}) -> builtins.int"
   files: *source
-  parametrized:
+  parametrized: &transform_params
     - params: "builtins.int, v2: f.C2, v3: f.C3, v4: f.C4, v5: f.C5, v6: f.C6, v7: f.C7, v8: f.C8, v9: f.C9"
       id: 1
     - params: "f.C1, builtins.int, v3: f.C3, v4: f.C4, v5: f.C5, v6: f.C6, v7: f.C7, v8: f.C8, v9: f.C9"
@@ -85,3 +107,14 @@
       id: 8
     - params: "f.C1, f.C2, f.C3, f.C4, f.C5, f.C6, f.C7, f.C8, builtins.int"
       id: 9
+
+- case: concatenate_transform
+  main: |
+    from reexport import concatenate
+    from f import *
+
+    @concatenate(transform=({{ id }}, int))
+    def f(v1: C1, v2: C2, v3: C3, v4: C4, v5: C5, v6: C6, v7: C7, v8: C8, v9: C9) -> int: return 1
+    reveal_type(f) # N: Revealed type is "def ({{params}}) -> builtins.int"
+  files: *source
+  parametrized: *transform_params
