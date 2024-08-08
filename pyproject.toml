@@ -28,7 +28,7 @@ pytest-mypy-plugins = "^3"
 [tool.commitizen]
 bump_message   = "chore(release): bump version $current_version -> $new_version"
 pre_bump_hooks = ["./update-changelog.sh"]
-version        = "0.1.0"                                                       # version anchor
+version        = "0.1.0"                                                         # version anchor
 version_files  = ["pyproject.toml:version anchor", "reexport/__init__.py"]
 
 [build-system]
